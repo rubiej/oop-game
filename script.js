@@ -1,4 +1,3 @@
-// Room class
 class Room {
   constructor(name, description, items = [], characters = []) {
     this.name = name;
@@ -24,7 +23,6 @@ class Room {
   }
 }
 
-// Item class
 class Item {
   constructor(name, description, isCollectible = true) {
     this.name = name;
@@ -33,7 +31,6 @@ class Item {
   }
 }
 
-// Character class
 class Character {
   constructor(name, description, interaction) {
     this.name = name;
@@ -46,7 +43,6 @@ class Character {
   }
 }
 
-// Game class
 class Game {
   constructor(rooms) {
     this.rooms = rooms;
@@ -103,39 +99,37 @@ const game = new Game([library]);
 
 // DOM interactions
 document.addEventListener("DOMContentLoaded", () => {
-  const startBtn = document.getElementById("startBtn");
-  startBtn.addEventListener("click", () => {
+  document.getElementById("startBtn").addEventListener("click", () => {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
     updateRoom(game.start());
   });
+
+  document.getElementById("interactBtn").addEventListener("click", () => {
+    const text = game.interactWith("Butler");
+    updateRoom(text);
+  });
+
+  document.getElementById("collectBtn").addEventListener("click", () => {
+    const text = game.collectItem("Ancient Book");
+    const win = game.checkWinCondition();
+    updateRoom(`${text}\n${win}`);
+
+    if (game.isOver) {
+      document.getElementById("game").classList.add("hidden");
+      document.getElementById("result").classList.remove("hidden");
+      document.getElementById("resultText").textContent = win;
+    }
+  });
+
+  document.getElementById("reenterBtn").addEventListener("click", () => {
+    updateRoom(game.moveTo("Library"));
+  });
+
+  document.getElementById("restartBtn").addEventListener("click", () => {
+    location.reload();
+  });
 });
-
-function handleMove(roomName) {
-  const text = game.moveTo(roomName);
-  updateRoom(text);
-}
-
-function handleInteract(name) {
-  const text = game.interactWith(name);
-  updateRoom(text);
-}
-
-function handleCollect(itemName) {
-  const text = game.collectItem(itemName);
-  const win = game.checkWinCondition();
-  updateRoom(`${text}\n${win}`);
-
-  if (game.isOver) {
-    document.getElementById("game").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("resultText").textContent = win;
-  }
-}
-
-function restartGame() {
-  location.reload();
-}
 
 function updateRoom(text) {
   document.getElementById("roomOutput").textContent = text;
