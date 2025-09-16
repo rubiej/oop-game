@@ -1,5 +1,8 @@
-// ==== Classes ====
+// ==========================
+// 🧱 CLASS DEFINITIONS
+// ==========================
 
+// Represents a room in the mansion
 class Room {
   constructor(name, description, items = [], characters = [], puzzle = null) {
     this.name = name;
@@ -11,6 +14,7 @@ class Room {
     this.solved = false;
   }
 
+  // Called when player enters the room
   enter() {
     this.visited = true;
     let output = `📍 You enter the ${this.name}.\n${this.description}\n`;
@@ -33,6 +37,7 @@ class Room {
     return output;
   }
 
+  // Called when player attempts to solve the room's puzzle
   solvePuzzle(answer) {
     if (this.puzzle && answer === this.puzzle.answer) {
       this.solved = true;
@@ -42,6 +47,7 @@ class Room {
   }
 }
 
+// Represents an item in the game
 class Item {
   constructor(name, description, isCollectible = true) {
     this.name = name;
@@ -50,6 +56,7 @@ class Item {
   }
 }
 
+// Represents a character the player can interact with
 class Character {
   constructor(name, description, interaction) {
     this.name = name;
@@ -62,6 +69,7 @@ class Character {
   }
 }
 
+// Main game controller
 class Game {
   constructor(rooms) {
     this.rooms = rooms;
@@ -129,7 +137,9 @@ class Game {
   }
 }
 
-// ==== Room Setup ====
+// ==========================
+// 🏰 ROOM SETUP
+// ==========================
 
 const library = new Room(
   "Library",
@@ -181,9 +191,12 @@ const attic = new Room(
 
 const game = new Game([library, conservatory, study, attic]);
 
-// ==== DOM Interactions ====
+// ==========================
+// 🎮 DOM INTERACTIONS
+// ==========================
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Start game
   document.getElementById("startBtn").addEventListener("click", () => {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
@@ -191,30 +204,28 @@ document.addEventListener("DOMContentLoaded", () => {
     updateInventory();
   });
 
+  // ✅ FIXED: Room navigation via dropdown
   document.getElementById("roomSelect").addEventListener("change", e => {
-    updateRoom(game.moveTo(e.target.value));
+    const selectedRoom = e.target.value;
+    updateRoom(game.moveTo(selectedRoom));
+    updateInventory();
   });
 
+  // Talk to character
   document.getElementById("interactBtn").addEventListener("click", () => {
     const char = game.currentRoom.characters[0];
-    if (char) {
-      updateRoom(game.interactWith(char.name));
-    } else {
-      updateRoom("❌ No one to talk to here.");
-    }
+    updateRoom(char ? game.interactWith(char.name) : "❌ No one to talk to here.");
   });
 
+  // Collect item
   document.getElementById("collectBtn").addEventListener("click", () => {
     const item = game.currentRoom.items[0];
-    if (item) {
-      const text = game.collectItem(item.name);
-      updateRoom(`${text}\n${game.checkWinCondition()}`);
-      updateInventory();
-    } else {
-      updateRoom("❌ Nothing to collect here.");
-    }
+    const result = item ? game.collectItem(item.name) : "❌ Nothing to collect here.";
+    updateRoom(`${result}\n${game.checkWinCondition()}`);
+    updateInventory();
   });
 
+  // Solve puzzle
   document.getElementById("solveBtn").addEventListener("click", () => {
     const answer = document.getElementById("answerInput").value.trim();
     if (answer) {
@@ -223,23 +234,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  document.getElementById("accuseBtn").addEventListener("click", () => {
-    const suspect = document.getElementById("suspectInput").value.trim();
-    if (suspect) {
-      updateRoom(game.accuse(suspect));
-    }
-  });
-
-  document.getElementById("restartBtn").addEventListener("click", () => {
-    location.reload();
-  });
-});
-
-function updateRoom(text) {
-  document.getElementById("roomOutput").textContent = text;
-}
-
-function updateInventory() {
-  const inv = game.inventory.map(i => `- ${i.name}: ${i.description}`).join('\n');
-  document.getElementById("inventory").textContent = inv || "👜 Inventory is empty.";
-}
+  //
