@@ -8,10 +8,10 @@
   <!-- Tailwind CSS for styling -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Custom animation for smooth entrance -->
+  <!-- Custom animation for fade-in effect -->
   <style>
     body {
-      /* Background image sets the mood of the game */
+      /* Background image sets the tone of the game */
       background-image: url('https://images.unsplash.com/photo-1607746882042-944635dfe10e');
       background-size: cover;
       background-position: center;
@@ -52,7 +52,7 @@
     <!-- Room description and puzzle output -->
     <div id="roomOutput" class="whitespace-pre-line mb-4 text-lg"></div>
 
-    <!-- Room selector dropdown -->
+    <!-- 🔄 Room Selector Dropdown -->
     <label for="roomSelect" class="block mb-2 font-semibold">Choose a room:</label>
     <select id="roomSelect" class="mb-4 w-full p-2 rounded text-black">
       <option value="Library">Library</option>
@@ -61,14 +61,14 @@
       <option value="Attic">Attic</option>
     </select>
 
-    <!-- Puzzle answer input -->
+    <!-- 🧩 Puzzle Answer Input -->
     <label for="answerInput" class="block mb-2 font-semibold">Answer the puzzle:</label>
     <input id="answerInput" type="text" placeholder="Type your answer..." class="mb-4 w-full p-2 rounded text-black" />
     <button id="solveBtn" class="bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-400 mb-4">
       Submit Answer
     </button>
 
-    <!-- Interaction buttons -->
+    <!-- 🗣️ Interaction Buttons -->
     <div class="space-y-2">
       <button id="interactBtn" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-400 w-full">
         Talk to Character
@@ -78,12 +78,28 @@
       </button>
     </div>
 
-    <!-- Inventory display -->
+    <!-- 🎒 Inventory Display -->
     <div class="mt-6">
       <h2 class="text-xl font-bold mb-2">Inventory</h2>
       <pre id="inventory" class="bg-gray-800 p-4 rounded text-sm whitespace-pre-line"></pre>
     </div>
 
-    <!-- Final confrontation section -->
+    <!-- 🎭 Final Accusation Section -->
     <div class="mt-6">
-      <h2 class="text-xl font-bold mb-2">Final Accusation
+      <h2 class="text-xl font-bold mb-2">Final Accusation</h2>
+      <input id="suspectInput" type="text" placeholder="Who do you accuse?" class="mb-2 w-full p-2 rounded text-black" />
+      <button id="accuseBtn" class="bg-red-500 px-4 py-2 rounded hover:bg-red-400 w-full">
+        Accuse Suspect
+      </button>
+    </div>
+  </div>
+
+  <!-- 🔴 End Game Result -->
+  <div id="result" class="hidden text-center animate-fadeInUp mt-6">
+    <p id="resultText" class="text-xl font-semibold mb-4"></p>
+    <button id="restartBtn" class="bg-yellow-500 px-6 py-2 rounded hover:bg-yellow-400">
+      Restart Game
+    </button>
+  </div>
+
+  <!-- 🔗 Link to JavaScript logic -->
