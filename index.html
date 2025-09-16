@@ -11,7 +11,6 @@
   <!-- Custom animation for fade-in effect -->
   <style>
     body {
-      /* Background image sets the tone of the game */
       background-image: url('https://images.unsplash.com/photo-1607746882042-944635dfe10e');
       background-size: cover;
       background-position: center;
@@ -37,7 +36,7 @@
 
 <body class="min-h-screen flex flex-col items-center justify-center text-white bg-black bg-opacity-70 p-6">
 
-  <!-- 🟡 Intro Section: Title and Start Button -->
+  <!-- 🟡 Intro Section -->
   <div id="intro" class="text-center animate-fadeInUp">
     <h1 class="text-4xl font-bold mb-4">Mystery at Blackthorn Manor</h1>
     <p class="mb-6 text-lg">Explore the mansion, uncover clues, and solve the mystery of the stolen jewels.</p>
@@ -64,7 +63,7 @@
     <!-- 🧩 Puzzle Answer Input -->
     <label for="answerInput" class="block mb-2 font-semibold">Answer the puzzle:</label>
     <input id="answerInput" type="text" placeholder="Type your answer..." class="mb-4 w-full p-2 rounded text-black" />
-    <button id="solveBtn" class="bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-400 mb-4">
+    <button id="solveBtn" class="bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-400 mb-4 w-full">
       Submit Answer
     </button>
 
@@ -103,3 +102,6 @@
   </div>
 
   <!-- 🔗 Link to JavaScript logic -->
+  <script src="js/script.js"></script>
+</body>
+</html>
