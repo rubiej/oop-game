@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("startBtn").addEventListener("click", () => {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
-    playSound("ambient");
+    playSound("mystical");
     updateRoom(game.start());
     updateInventory();
   });
