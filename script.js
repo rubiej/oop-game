@@ -26,6 +26,23 @@ class Room {
   }
 }
 
+const library = new Room(
+  "Library",
+  "Dusty shelves line the walls. A strange book lies open on the desk.",
+  [new Item("Ancient Book", "It has a riddle scribbled inside.")],
+  [new Character("Butler", "He looks nervous.", () => "🤔 The butler says: 'I saw someone sneaking into the attic last night.'")]
+);
+
+const attic = new Room(
+  "Attic",
+  "Cobwebs hang from the rafters. A locked chest sits in the corner.",
+  [new Item("Jewels", "The stolen treasure!", true)],
+  [],
+  () => "🧩 Solve the puzzle to unlock the chest."
+);
+
+const game = new Game([library, attic]);
+
 // 🧸 Items you can collect or interact with
 class Item {
   constructor(name, description, isCollectible = true) {
