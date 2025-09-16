@@ -1,3 +1,4 @@
+// Room class
 class Room {
   constructor(name, description, items = [], characters = []) {
     this.name = name;
@@ -23,6 +24,7 @@ class Room {
   }
 }
 
+// Item class
 class Item {
   constructor(name, description, isCollectible = true) {
     this.name = name;
@@ -31,6 +33,7 @@ class Item {
   }
 }
 
+// Character class
 class Character {
   constructor(name, description, interaction) {
     this.name = name;
@@ -43,6 +46,7 @@ class Character {
   }
 }
 
+// Game class
 class Game {
   constructor(rooms) {
     this.rooms = rooms;
@@ -52,7 +56,7 @@ class Game {
   }
 
   start() {
-    this.moveTo("Library");
+    return this.moveTo("Library");
   }
 
   moveTo(roomName) {
@@ -87,7 +91,7 @@ class Game {
   }
 }
 
-// 🏰 Room setup
+// Room setup
 const library = new Room(
   "Library",
   "Dusty shelves line the walls. A strange book lies open on the desk.",
@@ -97,9 +101,10 @@ const library = new Room(
 
 const game = new Game([library]);
 
-// 🎮 DOM interactions
+// DOM interactions
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("startBtn").addEventListener("click", () => {
+  const startBtn = document.getElementById("startBtn");
+  startBtn.addEventListener("click", () => {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
     updateRoom(game.start());
@@ -128,10 +133,10 @@ function handleCollect(itemName) {
   }
 }
 
-function updateRoom(text) {
-  document.getElementById("roomOutput").textContent = text;
-}
-
 function restartGame() {
   location.reload();
+}
+
+function updateRoom(text) {
+  document.getElementById("roomOutput").textContent = text;
 }
