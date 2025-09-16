@@ -233,5 +233,28 @@ document.addEventListener("DOMContentLoaded", () => {
       updateRoom(`${result}\n${game.checkWinCondition()}`);
     }
   });
+ 
+    // Final accusation
+  document.getElementById("accuseBtn").addEventListener("click", () => {
+    const suspect = document.getElementById("suspectInput").value.trim();
+    if (suspect) {
+      updateRoom(game.accuse(suspect));
+    }
+  });
 
-  //
+  // Restart game
+  document.getElementById("restartBtn").addEventListener("click", () => {
+    location.reload();
+  });
+});
+
+// ✅ Utility function to update room text
+function updateRoom(text) {
+  document.getElementById("roomOutput").textContent = text;
+}
+
+// ✅ Utility function to update inventory display
+function updateInventory() {
+  const inv = game.inventory.map(i => `- ${i.name}: ${i.description}`).join('\n');
+  document.getElementById("inventory").textContent = inv || "👜 Inventory is empty.";
+}
