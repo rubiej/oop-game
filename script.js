@@ -26,6 +26,25 @@ class Room {
   }
 }
 
+function handleMove(roomName) {
+  const text = game.moveTo(roomName);
+  updateOutput(text);
+}
+
+function handleInteract(name) {
+  const text = game.interactWith(name);
+  updateOutput(text);
+}
+
+function handleCollect(itemName) {
+  const text = game.collectItem(itemName);
+  updateOutput(text + "\n" + game.checkWinCondition());
+}
+
+function updateOutput(text) {
+  document.getElementById("output").textContent = text;
+}
+
 const library = new Room(
   "Library",
   "Dusty shelves line the walls. A strange book lies open on the desk.",
