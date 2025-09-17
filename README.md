@@ -12,7 +12,7 @@ game.
 4. The display of a description of any objects or characters who are in the room.
 5. The ability to interact with characters and /or objects / rooms in the game (e.g. fight a
 character, solve a puzzle, collect an object).
-6. The ability to “loose” the game if certain conditions occur (e.g. in interaction with a
+6. The ability to “lose” the game if certain conditions occur (e.g. in interaction with a
 character, object or room).
 7. The ability to “win” the game if certain conditions occur (e.g. in interaction with a
 character, object or room).
