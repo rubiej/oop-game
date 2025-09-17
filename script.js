@@ -249,6 +249,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Sound functions
+function playSound(id) {
+  const sound = document.getElementById(id);
+  if (sound) {
+    sound.currentTime = 0;
+    sound.play();
+  }
+}
+
 // ✅ Utility function to update room text
 function updateRoom(text) {
   document.getElementById("roomOutput").textContent = text;
