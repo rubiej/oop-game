@@ -1,4 +1,4 @@
-// ==========================
+/ ==========================
 // 🧱 CLASS DEFINITIONS
 // ==========================
 
@@ -51,6 +51,7 @@ solvePuzzle(answer) {
   });
   return output;
   } // ✅ This closes the Room class
+} // <-- Add this to properly close the Room class
 
 // Represents an item in the game
 class Item {
