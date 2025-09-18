@@ -50,10 +50,10 @@ solvePuzzle(answer) {
     output += `- ${opt}\n`;
   });
   return output;
-} // ✅ This closes the Room class
+  } // ✅ This closes the Room class
 
 // Represents an item in the game
- class Item {
+class Item {
   constructor(name, description, isCollectible = true) {
     this.name = name;
     this.description = description;
