@@ -207,11 +207,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ✅ FIXED: Room navigation via dropdown
   document.getElementById("roomSelect").addEventListener("change", e => {
-    const selectedRoom = e.target.value;
-    updateRoom(game.moveTo(selectedRoom));
-    updateInventory();
-  });
-
+  const selectedRoom = e.target.value;
+  document.getElementById("answerInput").value = ""; // Clear puzzle input
+  updateRoom(game.moveTo(selectedRoom));
+  updateInventory();
+});
+  
   // Talk to character
   document.getElementById("interactBtn").addEventListener("click", () => {
     const char = game.currentRoom.characters[0];
