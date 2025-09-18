@@ -39,12 +39,17 @@ class Room {
 
   // Called when player attempts to solve the room's puzzle
   solvePuzzle(answer) {
-    if (this.puzzle && answer === this.puzzle.answer) {
-      this.solved = true;
-      return `✅ Correct! You've solved the puzzle in the ${this.name}.`;
-    }
-    return `❌ That's not the right answer.`;
+  if (this.puzzle && answer === this.puzzle.answer) {
+    this.solved = true;
+    return `✅ Correct! You've solved the puzzle in the ${this.name}.`;
   }
+
+  // If incorrect, re-show the puzzle and options
+  let output = `❌ That's not the right answer.\n🧩 Puzzle: ${this.puzzle.question}\n`;
+  this.puzzle.options.forEach(opt => {
+    output += `- ${opt}\n`;
+  });
+  return output;
 }
 
 // Represents an item in the game
