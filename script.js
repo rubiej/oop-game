@@ -37,8 +37,8 @@ class Room {
     return output;
   }
 
-  // Called when player attempts to solve the room's puzzle
-  solvePuzzle(answer) {
+ // Called when player attempts to solve the room's puzzle
+solvePuzzle(answer) {
   if (this.puzzle && answer === this.puzzle.answer) {
     this.solved = true;
     return `✅ Correct! You've solved the puzzle in the ${this.name}.`;
@@ -50,10 +50,10 @@ class Room {
     output += `- ${opt}\n`;
   });
   return output;
-}
+} // ✅ This closes the Room class
 
 // Represents an item in the game
-class Item {
+ class Item {
   constructor(name, description, isCollectible = true) {
     this.name = name;
     this.description = description;
