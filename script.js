@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("startBtn").addEventListener("click", () => {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
-  // playSound("mystical");
+    playSound("mystical"); // Ambient music
     updateRoom(game.start());
     updateInventory();
   });
@@ -248,6 +248,15 @@ document.addEventListener("DOMContentLoaded", () => {
     location.reload();
   });
 });
+
+// ✅ Play a sound by ID
+function playSound(id) {
+  const sound = document.getElementById(id);
+  if (sound) {
+    sound.currentTime = 0;
+    sound.play().catch(e => console.warn(`Sound '${id}' failed to play:`, e));
+  }
+}
 
 // ✅ Utility function to update room text
 function updateRoom(text) {
