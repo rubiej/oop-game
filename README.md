@@ -41,6 +41,9 @@ game could be much simpler and only include navigation around the setting).
 
 Known Bugs:
 
+BF1 - Puzzle field not clearing after visiting room - resolved 17/09
+BF2 - Audio not working - resolved for room entry 'mystic.mp3' 18/09
+
 Design & Planning:
 
 Game summary - classic 'whodunnit' involving characters in a stateley home with the objective of discovering who stole the family fortune. Different rooms, items to collect, characters and puzzles are presented.
@@ -63,5 +66,10 @@ Each object tracks its own state:
 • 	 stores collected items
 • 	 keeps track of where the player is
    
-
+Future enhancements:
+1) More characters per room
+2) Add more inventory
+3) Cleaner interface as needs to adapt to different screen sizes (only tested on larger monitors)
+4) It would be great have animations alongsdie sound working correctly to better engage end user
+5) Clearer navigation to rooms
 
